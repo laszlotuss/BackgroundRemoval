@@ -16,7 +16,10 @@ public struct BackgroundRemoval {
     ///@param filterSharpness tha sharpness of filter if needed (recommeneded)
     ///@param maskOnly pass true if you want the mask onl, not the output image
     public func removeBackground(image: UIImage, maskOnly: Bool = false) -> UIImage? {
-        
+        maskOnly ? removeBackground(image: image, maskOnly: true).mask : removeBackground(image: image).cropped
+    }
+    
+    public func removeBackground(image: UIImage, maskOnly: Bool = false) -> (cropped: UIImage?, mask: UIImage?) {
         let w = image.size.width
         let h = image.size.height
 
@@ -29,7 +32,8 @@ public struct BackgroundRemoval {
         let scaledImage = image.scaled(to: sz, scalingMode: .aspectFit)
 
         /// resize image to 320 * 320 before sending it to the model
-        guard let resize = scaledImage?.resizeImage(width: 320, height: 320), let buffer = buffer(from: resize) else { return nil }
+        guard let resize = scaledImage?.resizeImage(width: 320, height: 320), let buffer = buffer(from: resize)
+        else { return (nil, nil) }
         
         do {
             let model = try LaLabsu2netp.init()
@@ -40,18 +44,16 @@ public struct BackgroundRemoval {
             
             /// scale the image again to the longest dimension in the input image,
             let scaledOut = out?.scaled(to: sz, scalingMode: .aspectFit)
-            
-            guard !maskOnly else { return scaledOut }
-            
-            guard let invertedImage = scaledOut?.invertedImage() else { return nil }
+
+            guard !maskOnly, let invertedImage = scaledOut?.invertedImage() else { return (nil, scaledOut) }
             
             // please pass this to the output image if you need to see the masked image
-            return scaledImage?.maskImage(withMask: invertedImage)
+            return (scaledImage?.maskImage(withMask: invertedImage), scaledOut)
         } catch let error {
             print("Error removeBackground: \(error.localizedDescription)")
         }
         
-        return nil
+        return (nil, nil)
     }
     
     func buffer(from image: UIImage) -> CVPixelBuffer? {
