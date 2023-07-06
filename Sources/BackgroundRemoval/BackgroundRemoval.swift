@@ -10,14 +10,12 @@ import CoreML
 import Vision
 
 public struct BackgroundRemoval {
-    public init() {
-    }
+    public init() { }
     
     ///@param uploadedImage of the input image
     ///@param filterSharpness tha sharpness of filter if needed (recommeneded)
     ///@param maskOnly pass true if you want the mask onl, not the output image
-    
-    public func removeBackground(image: UIImage, maskOnly: Bool = false) -> UIImage {
+    public func removeBackground(image: UIImage, maskOnly: Bool = false) -> UIImage? {
         
         let w = image.size.width
         let h = image.size.height
@@ -31,23 +29,30 @@ public struct BackgroundRemoval {
         let scaledImage = image.scaled(to: sz, scalingMode: .aspectFit)
 
         /// resize image to 320 * 320 before sending it to the model
-        let resize =  scaledImage.resizeImage(width: 320, height: 320)
+        guard let resize = scaledImage?.resizeImage(width: 320, height: 320), let buffer = buffer(from: resize) else { return nil }
         
-        /// init model and get result
-        let model = try? LaLabsu2netp.init()
-        let result = try? model?.prediction(in_0: buffer(from: resize)!)
-        let out = UIImage(pixelBuffer: result!.out_p1)
+        do {
+            let model = try LaLabsu2netp.init()
+            let result = try model.prediction(in_0: buffer)
+            
+            /// init model and get result
+            let out = UIImage(pixelBuffer: result.out_p1)
+            
+            /// scale the image again to the longest dimension in the input image,
+            let scaledOut = out?.scaled(to: sz, scalingMode: .aspectFit)
+            
+            guard !maskOnly else { return scaledOut }
+            
+            guard let invertedImage = scaledOut?.invertedImage() else { return nil }
+            
+            // please pass this to the output image if you need to see the masked image
+            return scaledImage?.maskImage(withMask: invertedImage)
+        } catch let error {
+            print("Error removeBackground: \(error.localizedDescription)")
+        }
         
-        /// scale the image again to the longest dimension in the input image,
-        let scaledOut = out!.scaled(to: sz, scalingMode: .aspectFit)
-                
-        // please pass this to the output image if you need to see the masked image
-        let finalResult = scaledImage.maskImage(withMask: scaledOut.invertedImage()!)
-
-        return maskOnly ? scaledOut : finalResult
+        return nil
     }
-    
-    
     
     func buffer(from image: UIImage) -> CVPixelBuffer? {
       let attrs = [kCVPixelBufferCGImageCompatibilityKey: kCFBooleanTrue, kCVPixelBufferCGBitmapContextCompatibilityKey: kCFBooleanTrue] as CFDictionary

@@ -12,7 +12,7 @@ import VideoToolbox
 
 extension UIImage {
     /// resize image first to deal with the model constraints 320*320 images only
-    func resizeImage(width: CGFloat, height: CGFloat) -> UIImage {
+    func resizeImage(width: CGFloat, height: CGFloat) -> UIImage? {
 
         let scale = width / self.size.width
         let heightScale = height / self.size.height
@@ -25,7 +25,7 @@ extension UIImage {
         let newImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
 
-        return newImage!
+        return newImage
     }
     
     /// Represents a scaling mode
@@ -60,7 +60,7 @@ extension UIImage {
     ///     - scalingMode: the desired scaling mode
     ///
     /// - returns: a new scaled image.
-    func scaled(to newSize: CGSize, scalingMode: UIImage.ScalingMode = .aspectFill) -> UIImage {
+    func scaled(to newSize: CGSize, scalingMode: UIImage.ScalingMode = .aspectFill) -> UIImage? {
         
         let aspectRatio = scalingMode.aspectRatio(between: newSize, and: size)
         
@@ -80,7 +80,7 @@ extension UIImage {
 
         UIGraphicsEndImageContext()
 
-        return scaledImage!
+        return scaledImage
     }
     
     /// the model result mask is white path, we need to invert it first before we mask to get the results
@@ -99,25 +99,25 @@ extension UIImage {
   
     
     /// mask the input image with our mask to get the final result
-    func maskImage(withMask maskImage: UIImage) -> UIImage {
+    func maskImage(withMask maskImage: UIImage) -> UIImage? {
         
-        let maskRef = maskImage.cgImage
+        guard let maskRef = maskImage.cgImage, let dataProvider = maskRef.dataProvider else { return nil }
 
-        let mask = CGImage(
-            maskWidth: maskRef!.width,
-            height: maskRef!.height,
-            bitsPerComponent: maskRef!.bitsPerComponent,
-            bitsPerPixel: maskRef!.bitsPerPixel,
-            bytesPerRow: maskRef!.bytesPerRow,
-            provider: maskRef!.dataProvider!,
+        guard let mask = CGImage(
+            maskWidth: maskRef.width,
+            height: maskRef.height,
+            bitsPerComponent: maskRef.bitsPerComponent,
+            bitsPerPixel: maskRef.bitsPerPixel,
+            bytesPerRow: maskRef.bytesPerRow,
+            provider: dataProvider,
             decode: nil,
-            shouldInterpolate: false)
-
-        let masked = self.cgImage!.masking(mask!)
-        let maskedImage = UIImage(cgImage: masked!)
-
+            shouldInterpolate: false),
+              let masked = cgImage?.masking(mask) else {
+            return nil
+        }
+        
         // No need to release. Core Foundation objects are automatically memory managed.
-        return maskedImage
+        return UIImage(cgImage: masked)
 
     }
     
