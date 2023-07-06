@@ -18,7 +18,7 @@
 
 /* Begin PBXFileReference section */
 		579C8FDC2A56D757007429BA /* BackgroundRemoval */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = BackgroundRemoval; path = ..; sourceTree = "<group>"; };
-		F34E96E827E34FFE00C60368 /* example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = example.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F34E96E827E34FFE00C60368 /* BackgroundRemovalExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BackgroundRemovalExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F34E96EB27E34FFE00C60368 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F34E96ED27E34FFE00C60368 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		F34E96EF27E34FFE00C60368 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -68,7 +68,7 @@
 		F34E96E927E34FFE00C60368 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				F34E96E827E34FFE00C60368 /* example.app */,
+				F34E96E827E34FFE00C60368 /* BackgroundRemovalExample.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -90,9 +90,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		F34E96E727E34FFE00C60368 /* example */ = {
+		F34E96E727E34FFE00C60368 /* BackgroundRemovalExample */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = F34E971227E34FFF00C60368 /* Build configuration list for PBXNativeTarget "example" */;
+			buildConfigurationList = F34E971227E34FFF00C60368 /* Build configuration list for PBXNativeTarget "BackgroundRemovalExample" */;
 			buildPhases = (
 				F34E96E427E34FFE00C60368 /* Sources */,
 				F34E96E527E34FFE00C60368 /* Frameworks */,
@@ -102,12 +102,12 @@
 			);
 			dependencies = (
 			);
-			name = example;
+			name = BackgroundRemovalExample;
 			packageProductDependencies = (
 				579C8FDE2A56D762007429BA /* BackgroundRemoval */,
 			);
 			productName = example;
-			productReference = F34E96E827E34FFE00C60368 /* example.app */;
+			productReference = F34E96E827E34FFE00C60368 /* BackgroundRemovalExample.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -125,7 +125,7 @@
 					};
 				};
 			};
-			buildConfigurationList = F34E96E327E34FFE00C60368 /* Build configuration list for PBXProject "example" */;
+			buildConfigurationList = F34E96E327E34FFE00C60368 /* Build configuration list for PBXProject "BackgroundRemovalExample" */;
 			compatibilityVersion = "Xcode 13.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -140,7 +140,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				F34E96E727E34FFE00C60368 /* example */,
+				F34E96E727E34FFE00C60368 /* BackgroundRemovalExample */,
 			);
 		};
 /* End PBXProject section */
@@ -362,7 +362,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		F34E96E327E34FFE00C60368 /* Build configuration list for PBXProject "example" */ = {
+		F34E96E327E34FFE00C60368 /* Build configuration list for PBXProject "BackgroundRemovalExample" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				F34E971027E34FFF00C60368 /* Debug */,
@@ -371,7 +371,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		F34E971227E34FFF00C60368 /* Build configuration list for PBXNativeTarget "example" */ = {
+		F34E971227E34FFF00C60368 /* Build configuration list for PBXNativeTarget "BackgroundRemovalExample" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				F34E971327E34FFF00C60368 /* Debug */,
