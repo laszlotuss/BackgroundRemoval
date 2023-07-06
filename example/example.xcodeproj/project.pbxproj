@@ -7,16 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		579C8FDF2A56D762007429BA /* BackgroundRemoval in Frameworks */ = {isa = PBXBuildFile; productRef = 579C8FDE2A56D762007429BA /* BackgroundRemoval */; };
 		F34E96EC27E34FFE00C60368 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34E96EB27E34FFE00C60368 /* AppDelegate.swift */; };
 		F34E96EE27E34FFE00C60368 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34E96ED27E34FFE00C60368 /* SceneDelegate.swift */; };
 		F34E96F027E34FFE00C60368 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34E96EF27E34FFE00C60368 /* ViewController.swift */; };
 		F34E96F327E34FFE00C60368 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F34E96F127E34FFE00C60368 /* Main.storyboard */; };
 		F34E96F527E34FFF00C60368 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F34E96F427E34FFF00C60368 /* Assets.xcassets */; };
 		F34E96F827E34FFF00C60368 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F34E96F627E34FFF00C60368 /* LaunchScreen.storyboard */; };
-		F3BBD33227E351B300DF4AEC /* BackgroundRemoval in Frameworks */ = {isa = PBXBuildFile; productRef = F3BBD33127E351B300DF4AEC /* BackgroundRemoval */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		579C8FDC2A56D757007429BA /* BackgroundRemoval */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = BackgroundRemoval; path = ..; sourceTree = "<group>"; };
 		F34E96E827E34FFE00C60368 /* example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F34E96EB27E34FFE00C60368 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F34E96ED27E34FFE00C60368 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -32,18 +33,35 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F3BBD33227E351B300DF4AEC /* BackgroundRemoval in Frameworks */,
+				579C8FDF2A56D762007429BA /* BackgroundRemoval in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		579C8FDB2A56D757007429BA /* Packages */ = {
+			isa = PBXGroup;
+			children = (
+				579C8FDC2A56D757007429BA /* BackgroundRemoval */,
+			);
+			name = Packages;
+			sourceTree = "<group>";
+		};
+		579C8FDD2A56D762007429BA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		F34E96DF27E34FFE00C60368 = {
 			isa = PBXGroup;
 			children = (
+				579C8FDB2A56D757007429BA /* Packages */,
 				F34E96EA27E34FFE00C60368 /* example */,
 				F34E96E927E34FFE00C60368 /* Products */,
+				579C8FDD2A56D762007429BA /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -86,7 +104,7 @@
 			);
 			name = example;
 			packageProductDependencies = (
-				F3BBD33127E351B300DF4AEC /* BackgroundRemoval */,
+				579C8FDE2A56D762007429BA /* BackgroundRemoval */,
 			);
 			productName = example;
 			productReference = F34E96E827E34FFE00C60368 /* example.app */;
@@ -117,7 +135,6 @@
 			);
 			mainGroup = F34E96DF27E34FFE00C60368;
 			packageReferences = (
-				F3BBD33027E351B300DF4AEC /* XCRemoteSwiftPackageReference "BackgroundRemoval" */,
 			);
 			productRefGroup = F34E96E927E34FFE00C60368 /* Products */;
 			projectDirPath = "";
@@ -295,7 +312,6 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = example/Info.plist;
@@ -322,7 +338,6 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = example/Info.plist;
@@ -367,21 +382,9 @@
 		};
 /* End XCConfigurationList section */
 
-/* Begin XCRemoteSwiftPackageReference section */
-		F3BBD33027E351B300DF4AEC /* XCRemoteSwiftPackageReference "BackgroundRemoval" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/Ezaldeen99/BackgroundRemoval.git";
-			requirement = {
-				branch = main;
-				kind = branch;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
 /* Begin XCSwiftPackageProductDependency section */
-		F3BBD33127E351B300DF4AEC /* BackgroundRemoval */ = {
+		579C8FDE2A56D762007429BA /* BackgroundRemoval */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = F3BBD33027E351B300DF4AEC /* XCRemoteSwiftPackageReference "BackgroundRemoval" */;
 			productName = BackgroundRemoval;
 		};
 /* End XCSwiftPackageProductDependency section */
